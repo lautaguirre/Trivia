@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Navbar, NavbarToggler, Collapse, NavItem, NavLink, NavbarBrand, Nav } from 'reactstrap';
+
+import './App.scss';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Navbar color="faded" light>
+          <NavbarBrand className="mr-auto">Ciba | Trivia</NavbarBrand>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink>40 AÑOS JUNTOS</NavLink>
+            </NavItem>
+          </Nav>
+        </Navbar>
+        <div className="d-flex justify-content-center">
+
+        </div>
       </div>
     );
   }
