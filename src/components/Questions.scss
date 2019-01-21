@@ -1,0 +1,31 @@
+.questionSection {
+  .cardContainer {
+    h1 {
+      margin-bottom: 25px;
+    }
+
+    h5 {
+      margin: 20px 0 40px 0;
+    }
+
+    .whiteBtn {
+      margin: 10px 0 10px 0;
+    }
+
+    .progress {
+      height: 0.25rem;
+      background-color: transparent;
+    }
+
+    .footer {
+      width: 100%;
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+
+      .footerPoints {
+        color: #F8BE00;
+      }
+    }
+  }
+}

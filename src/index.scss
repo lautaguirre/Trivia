@@ -20,4 +20,97 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  button {
+    word-break: break-all;
+  }
+
+  .flexContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+  }
+
+  .selectedAnswer {
+    background-color: #F8BE00 !important;
+  }
+
+  .wrongAnswer {
+    color: white;
+    background-color: #D1003E !important;
+  }
+
+  .rightAnswer {
+    color: white;
+    background-color: #70B125 !important;
+  }
+
+  .whiteBtn {
+    background-color: white;
+    border-radius: 20px;
+    padding: 7px 30px 7px 30px;
+    border: none;
+    width: -webkit-fill-available;
+    margin: 0 20px 0 20px;
+
+    &:hover {
+      background-color: gainsboro;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .cardContainer {
+    // Ver si funciona el flex y el min height
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    text-align: center;
+    padding: 30px;
+    background-color: rgba($color: #000000, $alpha: 0.90);
+    margin: 0 30px 0 30px;
+    border-radius: 15px;
+
+    h1 {
+      margin-bottom: 50px;
+      font-weight: bold;
+    }
+
+    .circleContainer {
+      display: flex;
+      justify-content: center;
+      margin: 50px 0 50px 0;
+
+      .circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        font-size: 50px;
+        color: #8CBA1A;
+        border-style: solid;
+        border-color: #8CBA1A;
+        border-width: 3px;
+
+        .circleInput {
+          width: 100%;
+          background-color: transparent;
+          border: none;
+          color: white;
+          text-align: center;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
 }

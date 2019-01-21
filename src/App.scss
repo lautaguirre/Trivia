@@ -13,76 +13,8 @@
     justify-content: space-between;
 
     .appNav {
-      padding-top: 15px;
+      padding-top: 17px;
       text-align: end;
-    }
-  }
-
-  .mainContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-
-    .cardContainer {
-      text-align: center;
-      padding: 20px;
-      background-color: rgba($color: #000000, $alpha: 0.90);
-      margin: 0 30px 0 30px;
-      border-radius: 15px;
-
-      h1 {
-        margin-bottom: 50px;
-      }
-
-      .circleContainer {
-        display: flex;
-        justify-content: center;
-        margin: 50px 0 50px 0;
-
-        .circle {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
-          font-size: 50px;
-          color: #8CBA1A;
-          border-style: solid;
-          border-color: #8CBA1A;
-          border-width: 3px;
-
-          .circleInput {
-            width: 100%;
-            background-color: transparent;
-            border: none;
-            color: white;
-            text-align: center;
-
-            &:focus {
-              outline: none;
-            }
-          }
-        }
-      }
-
-      .cardButton {
-        &:hover {
-          background-color: gainsboro;
-        }
-
-        &:focus {
-          outline: none;
-        }
-
-        background-color: white;
-        border-radius: 20px;
-        padding: 7px 30px 7px 30px;
-        border: none;
-        width: -webkit-fill-available;
-        margin: 0 20px 0 20px;
-      }
     }
   }
 }
