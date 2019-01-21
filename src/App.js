@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarToggler, Collapse, NavItem, NavLink, NavbarBrand, Nav } from 'reactstrap';
+
+import logo from './assets/logo.png';
 
 import './App.scss';
 
@@ -7,16 +8,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar color="faded" light>
-          <NavbarBrand className="mr-auto">Ciba | Trivia</NavbarBrand>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink>40 AÑOS JUNTOS</NavLink>
-            </NavItem>
-          </Nav>
-        </Navbar>
-        <div className="d-flex justify-content-center">
-
+        <div className="appHeader">
+          <div className="appBrand">
+            <img src={logo} alt="Ciba" height="50" />
+          </div>
+          <div className="appNav">
+            40 AÑOS JUNTOS
+          </div>
+        </div>
+        <div className="mainContainer">
+          <div className="cardContainer">
+            <h1>¡Hola!</h1>
+            <h3>Ingresá el número de mesa en la que estas.</h3>
+            <div className="circleContainer">
+              <div className="circle">
+                <input placeholder="00" type="text" maxLength="2" className="circleInput" />
+              </div>
+            </div>
+            <button className="cardButton" type="submit">Continuar</button>
+          </div>
         </div>
       </div>
     );
