@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-
 import Index from './routes/Index/Index';
 
 import logo from './assets/logo.png';
@@ -24,6 +23,7 @@ class App extends Component {
           </div>
 
           <Route path="/" exact component={Index} />
+          <Route path="/:mesa" exact component={Index} />
         </div>
       </Router>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import clock from '../assets/clock.png';
 
@@ -27,6 +28,10 @@ class Waiting extends Component {
             conecten los demas competidores y
             empezamos el juego!
           </div>
+
+          <h5>Elegiste mal tu mesa?</h5>
+
+          <Link className="whiteBtn" to="/">Volver</Link>
         </div>
       </div>
     );

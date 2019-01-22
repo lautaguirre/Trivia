@@ -21,10 +21,18 @@ class Index extends Component {
     this.nextQuestion = this.nextQuestion.bind(this);
   }
 
+  componentDidMount() {
+    const { mesa } = this.props.match.params;
+
+    if (mesa) {
+      this.setState({ mesa });
+    }
+  }
+
   setTable(e, table) {
     e.preventDefault();
 
-    this.setState({ mesa: table });
+    this.props.history.push(`/${table}`);
   }
 
   nextQuestion(addPoint) {
