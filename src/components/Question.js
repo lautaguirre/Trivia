@@ -3,33 +3,100 @@ import { Progress } from 'reactstrap';
 
 import './Questions.scss';
 
+import data from '../assets/questions.json';
+
 class Question extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      timer: 30
+      timer: 10,
+      selected: null,
     };
+
+    this.intervalo = null;
+
+    this.setSelected = this.setSelected.bind(this);
+    this.initTimer = this.initTimer.bind(this);
+    this.checkResponse = this.checkResponse.bind(this);
+  }
+
+  setSelected(index) {
+    this.setState({ selected: index });
   }
 
   componentDidMount() {
-    const intervalo = setInterval(() => {
-      this.setState((prevState) => ({ timer: prevState.timer - 1 }));
-
-      if (this.state.timer === 0) {
-        clearInterval(intervalo);
-        this.setState(({ timer: '00' }));
-      }
-    }, 1000);
+    this.initTimer(false);
   }
 
-  componentDidUpdate() {
-    console.log(this.state.timer);
+  componentWillUnmount() {
+    this.initTimer(true);
+  }
+
+  checkResponse() {
+    const { nextQuestion, question } = this.props;
+    const { selected } = this.state;
+
+    if (selected === data[question].correcta) {
+      nextQuestion(true);
+    } else {
+      nextQuestion(false);
+    }
+  }
+
+  initTimer(cancel) {
+    if (!cancel) {
+      this.intervalo = setInterval(() => {
+        this.setState((prevState) => ({ timer: prevState.timer - 1 }));
+
+        if (this.state.timer === 0) {
+          clearInterval(this.intervalo);
+
+          this.setState(({ timer: '00' }));
+
+          setTimeout(() => {
+            this.checkResponse();
+
+            this.setState(({ timer: 10, selected: null, correct: null }));
+
+            this.initTimer(false);
+          }, 1000);
+        }
+      }, 1000);
+    } else {
+      clearInterval(this.intervalo);
+    }
   }
 
   render() {
-    const { timer } = this.state;
-    const { mesa } = this.props;
+    const { timer, selected } = this.state;
+    const { mesa, points, question } = this.props;
+
+    const preguntas = data[question].respuestas.map((respuesta, index) => {
+      const style = () => {
+        if (timer !== '00') {
+          return (selected === index) && 'selectedAnswer';
+        } else {
+          if (selected === index) {
+            return (selected !== data[question].correcta) ? 'wrongAnswer' : 'rightAnswer';
+          } else {
+            return (index === data[question].correcta) && 'rightAnswer';
+          }
+        }
+      };
+
+      return (
+        <button
+          key={respuesta}
+          className={`whiteBtn ${style()}`}
+          onClick={() => {
+            if (timer !== '00') this.setSelected(index);
+          }}
+        >
+          {respuesta}
+        </button>
+      );
+    });
 
     return (
       <div className="questionSection flexContainer">
@@ -42,28 +109,19 @@ class Question extends Component {
 
           <Progress
             className="w-100"
-            value={timer === '00' ? 100 : (timer * 100) / 30}
+            value={timer === '00' ? 100 : (timer * 100) / 10}
             color={timer === '00' ? 'danger' : 'success'}
           />
 
           <h5>
-            ¿De que color es el
-            caballo blanco de san matín?
+            {data[question].pregunta}
           </h5>
 
-          <button className="whiteBtn">
-            Blanco
-          </button>
-          <button className="whiteBtn">
-            Rojo
-          </button>
-          <button className="whiteBtn">
-            Amarillo
-          </button>
+          {preguntas}
 
           <div className="footer">
             <div>Mesa {mesa}</div>
-            <div className="footerPoints">Pts: 50</div>
+            <div className="footerPoints">Pts: {points}</div>
           </div>
         </div>
       </div>

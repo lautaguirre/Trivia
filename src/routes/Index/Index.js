@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Init from '../../components/Init';
 import Waiting from '../../components/Waiting';
 import Question from '../../components/Question';
+import Result from '../../components/Result';
 
 class Index extends Component {
   constructor(props) {
@@ -11,11 +12,13 @@ class Index extends Component {
     this.state = {
       mesa: null,
       allPlayers: false,
-      question: 0
+      question: 0,
+      points: 0,
     };
 
     this.setTable = this.setTable.bind(this);
     this.setAllPlayers = this.setAllPlayers.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this);
   }
 
   setTable(e, table) {
@@ -24,20 +27,45 @@ class Index extends Component {
     this.setState({ mesa: table });
   }
 
+  nextQuestion(addPoint) {
+    if (addPoint) {
+      this.setState((prevState) => ({
+        points: prevState.points + 1,
+        question: prevState.question + 1
+      }));
+    } else {
+      this.setState((prevState) => ({
+        question: prevState.question + 1
+      }));
+    }
+  }
+
   setAllPlayers() {
     this.setState({ allPlayers: true });
   }
 
   render() {
-    const { mesa, allPlayers, question } = this.state;
+    const { mesa, allPlayers, question, points } = this.state;
 
+    if (question === 38) {
+      return (
+        <Result
+          mesa={mesa}
+          points={points}
+        />
+      );
+    }
+
+    if (mesa && allPlayers) {
       return (
         <Question
           mesa={mesa}
           question={question}
+          points={points}
+          nextQuestion={this.nextQuestion}
         />
       );
-
+    }
 
     if (mesa) {
       return (

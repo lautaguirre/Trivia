@@ -22,14 +22,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   button {
-    word-break: break-all;
+    // word-break: break-all;
   }
 
   .flexContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80%;
+    min-height: 80%;
   }
 
   .selectedAnswer {
@@ -70,6 +70,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 60vh;
+    min-width: 80vw;
     text-align: center;
     padding: 30px;
     background-color: rgba($color: #000000, $alpha: 0.90);

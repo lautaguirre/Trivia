@@ -1,0 +1,382 @@
+[
+  {
+    "pregunta": "¿De qué se alimentan los koalas?",
+    "correcta": 3,
+    "respuestas": [
+      "Pollo",
+      "Carne",
+      "Hojas de bamboo",
+      "Eucalipto"
+    ]
+  },
+  {
+    "pregunta": "¿Quién inventó el telescopio?",
+    "correcta": 1,
+    "respuestas": [
+      "Miguel Angel",
+      "Hans Lippershey",
+      "Leonardo Da Vinci",
+      "Juan Roget"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál fue la primera película de Walt Disney?",
+    "correcta": 0,
+    "respuestas": [
+      "Blancanieves y los siete enanitos",
+      "Mickey Mouse",
+      "Pato Donald",
+      "Mickey y sus amigos"
+    ]
+  },
+  {
+    "pregunta": "¿Cuántas veces parpadea una persona?",
+    "correcta": 3,
+    "respuestas": [
+      "23.000",
+      "21.000",
+      "17.000",
+      "25.000"
+    ]
+  },
+  {
+    "pregunta": "¿Ciudad más poblada mundo?",
+    "correcta": 1,
+    "respuestas": [
+      "Shanghai",
+      "Tokio",
+      "Dehli",
+      "Seúl"
+    ]
+  },
+  {
+    "pregunta": "¿Qué cantidad de huesos en el cuerpo humano adulto?",
+    "correcta": 0,
+    "respuestas": [
+      "206",
+      "300",
+      "231",
+      "207"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo del mundo?",
+    "correcta": 0,
+    "respuestas": [
+      "Amazonas",
+      "Nilo",
+      "Yangsté",
+      "Río Misisipi"
+    ]
+  },
+  {
+    "pregunta": "¿Quién pintó “La última cena”?",
+    "correcta": 2,
+    "respuestas": [
+      "Salvador Dalí",
+      "Pablo Picasso",
+      "Leonardo da Vinci",
+      "Vincent van Gogh"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el océano más grande?",
+    "correcta": 1,
+    "respuestas": [
+      "Océano Atlántico",
+      "Océano Pacífico",
+      "Océano Índico",
+      "Océano Antártico"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el país más grande del mundo?",
+    "correcta": 2,
+    "respuestas": [
+      "Canadá",
+      "China",
+      "Rusia",
+      "Estados Unidos"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es quinto planeta en el sistema solar?",
+    "correcta": 3,
+    "respuestas": [
+      "Mercurio",
+      "Marte",
+      "Plutón",
+      "Júpiter"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Suecia?",
+    "correcta": 2,
+    "respuestas": [
+      "Berna",
+      "Copenhague",
+      "Estocolmo",
+      "Oslo"
+    ]
+  },
+  {
+    "pregunta": "¿Cómo se llama el himno nacional de Francia?",
+    "correcta": 0,
+    "respuestas": [
+      "La Marsellesa",
+      "Mameli",
+      "God save the Queen",
+      "The Star-Spangled Banner"
+    ]
+  },
+  {
+    "pregunta": "¿Quién pronunció la frase “solo sé que no sé nada”?",
+    "correcta": 1,
+    "respuestas": [
+      "Platón",
+      "Sócrates",
+      "Aristóteles",
+      "Demócrito"
+    ]
+  },
+  {
+    "pregunta": "¿Cuántos dientes tiene una persona adulta?",
+    "correcta": 3,
+    "respuestas": [
+      "30",
+      "29",
+      "28",
+      "32"
+    ]
+  },
+  {
+    "pregunta": "¿Quién escribió “Hamlet”?",
+    "correcta": 2,
+    "respuestas": [
+      "Aleksandr Pushkin",
+      "Edgard Allan Poe",
+      "William Shakespear",
+      "Antonio Machado"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el lugar más frío de la tierra?",
+    "correcta": 1,
+    "respuestas": [
+      "Rusia",
+      "Antártida",
+      "Canadá",
+      "Estonia"
+    ]
+  },
+  {
+    "pregunta": "¿Qué equipo tiene más Copas Libertadores?",
+    "correcta": 2,
+    "respuestas": [
+      "Boca",
+      "River",
+      "Independiente",
+      "Estudiantes"
+    ]
+  },
+  {
+    "pregunta": "¿Quién es el máximo goleador de los Mundiales?",
+    "correcta": 3,
+    "respuestas": [
+      "Maradona",
+      "Pelé",
+      "Ronaldo",
+      "Miroslav Klose"
+    ]
+  },
+  {
+    "pregunta": "¿Como se llama el estadio de Boca Juniors?",
+    "correcta": 2,
+    "respuestas": [
+      "José Amalfitani",
+      "Antonio Vespucio Liberti",
+      "Alberto J. Armando",
+      "Pedro Bidegain"
+    ]
+  },
+  {
+    "pregunta": "¿Quién fue el campeón del torneo argentino 2016?",
+    "correcta": 2,
+    "respuestas": [
+      "Club Atlético River Plate",
+      "Club Atlético Boca Juniors",
+      "Club Atlético Lanús",
+      "Club Atlético San Lorenzo de Almagro"
+    ]
+  },
+  {
+    "pregunta": "¿Cual es el equipo con más campeonatos locales?",
+    "correcta": 0,
+    "respuestas": [
+      "Club Atlético River Plate",
+      "Club Atlético Boca Juniors",
+      "Club Atlético Racing Club de Avellaneda",
+      "Club Atlético Independiente"
+    ]
+  },
+  {
+    "pregunta": "¿Quién es el máximo ganador de Copas Mundiales?",
+    "correcta": 3,
+    "respuestas": [
+      "Alemania",
+      "Argentina",
+      "Italia",
+      "Brasil"
+    ]
+  },
+  {
+    "pregunta": "¿Cual es el apodo de Club Atlético Belgrano?",
+    "correcta": 0,
+    "respuestas": [
+      "Pirata",
+      "Cuervo",
+      "Gasoleros",
+      "Matador"
+    ]
+  },
+  {
+    "pregunta": "¿En qué equipo debutó Diego Armando Maradona?",
+    "correcta": 1,
+    "respuestas": [
+      "Club Atlético Boca Juniors",
+      "Asociación Atlética Argentinos Juniors",
+      "Club Atlético Newell's Old Boys",
+      "Club Deportivo Mandiyú"
+    ]
+  },
+  {
+    "pregunta": "¿En qué año salió campeón del mundo Argentina?",
+    "correcta": 3,
+    "respuestas": [
+      "1974 - 1978",
+      "1986 - 1994",
+      "2004 - 2014",
+      "1978 - 1986"
+    ]
+  },
+  {
+    "pregunta": "¿En qué año gano la selección Argentina mayor su último título?",
+    "correcta": 1,
+    "respuestas": [
+      "2004",
+      "1993",
+      "2014",
+      "1990"
+    ]
+  },
+  {
+    "pregunta": "¿Qué año ganaron Las Leonas el mundial de Hockey en Rosario?",
+    "correcta": 2,
+    "respuestas": [
+      "2011",
+      "2013",
+      "2010",
+      "2012"
+    ]
+  },
+  {
+    "pregunta": "¿En que año se consagró Argentina campeón de la Copa Davis?",
+    "correcta": 3,
+    "respuestas": [
+      "2013",
+      "2014",
+      "2015",
+      "2016"
+    ]
+  },
+  {
+    "pregunta": "¿Qué deporte práctica Paula Pareto?",
+    "correcta": 2,
+    "respuestas": [
+      "Karate",
+      "Kung Fu",
+      "Yudo",
+      "Taekwondo"
+    ]
+  },
+  {
+    "pregunta": "¿En qué año ganó Sebastián Crismanich la medalla dorada en JJOO?",
+    "correcta": 0,
+    "respuestas": [
+      "2012",
+      "2010",
+      "2008",
+      "2006"
+    ]
+  },
+  {
+    "pregunta": "¿Cuántas sucursales tiene Ciba?",
+    "correcta": 2,
+    "respuestas": [
+      "6",
+      "8",
+      "7",
+      "9"
+    ]
+  },
+  {
+    "pregunta": "¿Que día, mes y años abrió sus puertas Ciba?",
+    "correcta": 0,
+    "respuestas": [
+      "6 de Febrero de 1979",
+      "8 de Febrero de 1979",
+      "4 de Febrero de 1979",
+      "10 de Febrero de 1979"
+    ]
+  },
+  {
+    "pregunta": "¿En qué año se cambio por última vez el logotipo de Ciba?",
+    "correcta": 2,
+    "respuestas": [
+      "2017",
+      "2016",
+      "2018",
+      "2015"
+    ]
+  },
+  {
+    "pregunta": "¿Cuántos Servicios de Urgencia tiene Ciba?",
+    "correcta": 1,
+    "respuestas": [
+      "6",
+      "7",
+      "5",
+      "8"
+    ]
+  },
+  {
+    "pregunta": "¿Cuáles fueron los 2 Servicios que se incorporaron en al año 2018?",
+    "correcta": 1,
+    "respuestas": [
+      "Descuento en Pasajes - Veterinaria a Domicilio",
+      "Enfermería - Servicio Veterinaria a Domicilio",
+      "Servicio de Refrigeración - Veterinaria a Domicilio",
+      "Servicio de Refrigeración - Enfermería"
+    ]
+  },
+  {
+    "pregunta": "¿Cuántos empleados tiene Ciba?",
+    "correcta": 2,
+    "respuestas": [
+      "260",
+      "248",
+      "293",
+      "306"
+    ]
+  },
+  {
+    "pregunta": "¿A quien van dirigidos los servicios de Ciba?",
+    "correcta": 1,
+    "respuestas": [
+      "A la tercera edad",
+      "A la familia",
+      "A los jóvenes",
+      "A los niños"
+    ]
+  }
+]
