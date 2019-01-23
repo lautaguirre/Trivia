@@ -105,6 +105,7 @@ class Question extends Component {
     return (
       <div className="questionSection flexContainer">
         <div className="cardContainer">
+          <div className="questionNumber" >{`${question + 1} de ${data.length}`}</div>
           <h1
             className={timer === '00' ? 'text-danger' : ''}
           >

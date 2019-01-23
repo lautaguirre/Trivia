@@ -24,15 +24,19 @@ class Index extends Component {
   componentDidMount() {
     const { mesa } = this.props.match.params;
 
-    if (mesa) {
+    if (!isNaN(mesa) && Number.isInteger(Number(mesa)) && mesa <= 50 && mesa > 0) {
       this.setState({ mesa });
+    } else {
+      this.props.history.push('/');
     }
   }
 
   setTable(e, table) {
     e.preventDefault();
 
-    this.props.history.push(`/${table}`);
+    if (!isNaN(table) && Number.isInteger(Number(table)) && table <= 50 && table > 0) {
+      this.props.history.push(`/${table}`);
+    }
   }
 
   nextQuestion(addPoint) {
