@@ -10,7 +10,7 @@ class Question extends Component {
     super(props);
 
     this.state = {
-      timer: 10,
+      timer: 30,
       selected: null,
     };
 
@@ -45,6 +45,8 @@ class Question extends Component {
   }
 
   initTimer(cancel) {
+    const { question } = this.props;
+
     if (!cancel) {
       this.intervalo = setInterval(() => {
         this.setState((prevState) => ({ timer: prevState.timer - 1 }));
@@ -57,10 +59,12 @@ class Question extends Component {
           setTimeout(() => {
             this.checkResponse();
 
-            this.setState(({ timer: 10, selected: null, correct: null }));
+            if (question !== 37) {
+              this.setState(({ timer: 30, selected: null, correct: null }));
 
-            this.initTimer(false);
-          }, 1000);
+              this.initTimer(false);
+            }
+          }, 2000);
         }
       }, 1000);
     } else {
@@ -109,7 +113,7 @@ class Question extends Component {
 
           <Progress
             className="w-100"
-            value={timer === '00' ? 100 : (timer * 100) / 10}
+            value={timer === '00' ? 100 : (timer * 100) / 30}
             color={timer === '00' ? 'danger' : 'success'}
           />
 
