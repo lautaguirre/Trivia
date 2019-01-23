@@ -39,6 +39,14 @@ const positions = [
   {
     mesa: 46,
     pts: 20
+  },
+  {
+    mesa: 70,
+    pts: 30
+  },
+  {
+    mesa: 46,
+    pts: 20
   }
 ];
 
