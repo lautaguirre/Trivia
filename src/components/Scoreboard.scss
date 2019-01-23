@@ -1,0 +1,53 @@
+.scoreboardSection {
+  .scoreHeader {
+    display: flex;
+    align-items: center;
+    margin: 5vh 30px 20px 30px;
+
+    h1 {
+      margin: 13px;
+    }
+
+    .appNav {
+      font-size: 24px;
+      padding-top: 25px;
+      padding-left: 30px;
+      font-weight: 600;
+    }
+
+    .progress {
+      height: 0.5rem;
+      background-color: transparent;
+    }
+  }
+
+  .cardContainer {
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    h5 {
+      font-size: 34px;
+      margin: 20px 0 20px 0;
+    }
+
+    tr {
+      font-size: 24px;
+    }
+
+    .positions {
+      margin-right: auto;
+    }
+
+    .positionsTable {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .whiteBtn {
+      min-height: 105px;
+      font-size: 26px;
+      margin: 10px 0 10px 0;
+    }
+  }
+}

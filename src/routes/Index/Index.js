@@ -35,7 +35,7 @@ class Index extends Component {
     e.preventDefault();
 
     if (!isNaN(table) && Number.isInteger(Number(table)) && table <= 50 && table > 0) {
-      this.props.history.push(`/${table}`);
+      this.props.history.push(`/mesa/${table}`);
     }
   }
 

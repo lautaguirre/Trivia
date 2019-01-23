@@ -1,0 +1,28 @@
+.winnerSection {
+  .scoreHeader {
+    display: flex;
+    align-items: center;
+    margin: 5vh 30px 20px 30px;
+
+    .appNav {
+      font-size: 24px;
+      padding-top: 25px;
+      padding-left: 30px;
+      font-weight: 600;
+    }
+  }
+
+  .cardContainer {
+    flex-direction: initial;
+
+    .congratsImage {
+      width: 75%;
+    }
+
+    .congratsTable {
+      font-size: 150px;
+      font-weight: bold;
+      line-height: 1;
+    }
+  }
+}

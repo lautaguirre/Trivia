@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import Header from './components/Header';
 import Index from './routes/Index/Index';
-
-import logo from './assets/logo.png';
+import Dashboard from './routes/Dashboard/Dashboard';
 
 import './App.scss';
 
@@ -12,18 +12,11 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <div className="appHeader">
-            <div className="appBrand">
-              <img src={logo} alt="Ciba" height="50" />
-            </div>
-
-            <div className="appNav">
-              40 AÑOS JUNTOS
-            </div>
-          </div>
+          <Header />
 
           <Route path="/" exact component={Index} />
-          <Route path="/:mesa" exact component={Index} />
+          <Route path="/mesa/:mesa" exact component={Index} />
+          <Route path="/puntaje" exact component={Dashboard} />
         </div>
       </Router>
     );
