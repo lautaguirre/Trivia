@@ -5,6 +5,8 @@ import Waiting from '../../components/Waiting';
 import Question from '../../components/Question';
 import Result from '../../components/Result';
 
+import { subscribeToEstado, subscribeToStatus, addMesa} from '../../api/api';
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,9 @@ class Index extends Component {
       points: 0,
     };
 
+    subscribeToEstado((msg) => console.log(msg));
+    subscribeToStatus((obj) => console.log(obj));
+
     this.setTable = this.setTable.bind(this);
     this.setAllPlayers = this.setAllPlayers.bind(this);
     this.nextQuestion = this.nextQuestion.bind(this);
@@ -25,7 +30,9 @@ class Index extends Component {
     const { mesa } = this.props.match.params;
 
     if (!isNaN(mesa) && Number.isInteger(Number(mesa)) && mesa <= 50 && mesa > 0) {
-      this.setState({ mesa });
+      this.setState({ mesa }, () => {
+        addMesa(mesa);
+      });
     } else {
       this.props.history.push('/');
     }
