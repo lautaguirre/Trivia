@@ -4,70 +4,27 @@ import { Progress, Table } from 'reactstrap';
 
 import logo from '../assets/logo.png';
 
-import data from '../assets/questions.json';
-
 import './Scoreboard.scss';
-
-const positions = [
-  {
-    mesa: 36,
-    pts: 40
-  },
-  {
-    mesa: 7,
-    pts: 30
-  },
-  {
-    mesa: 40,
-    pts: 20
-  },
-  {
-    mesa: 4,
-    pts: 10
-  },{
-    mesa: 35,
-    pts: 0
-  },
-  {
-    mesa: 37,
-    pts: 40
-  },
-  {
-    mesa: 70,
-    pts: 30
-  },
-  {
-    mesa: 46,
-    pts: 20
-  },
-  {
-    mesa: 70,
-    pts: 30
-  },
-  {
-    mesa: 46,
-    pts: 20
-  }
-];
 
 class Scoreboard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      winner: null,
-      question: 35,
-      timer: 15,
+      timer: 15
     };
   }
 
   render() {
-    const { question, timer } = this.state;
+    const { timer } = this.state;
+    const { question, tables } = this.props;
 
-    const preguntas = data[question].respuestas.map((respuesta, index) => {
+    if (!question) return null;
+
+    const preguntas = question.respuestas.map((respuesta, index) => {
       const style = () => {
         if (timer === '00') {
-          return (index === data[question].correcta) && 'rightAnswer';
+          return (index === question.correcta) && 'rightAnswer';
         }
       };
 
@@ -81,12 +38,20 @@ class Scoreboard extends Component {
       );
     });
 
+    const positions = tables.sort((a,b) => (
+      a.preguntasCorrectas.length > b.preguntasCorrectas.length)
+      ? 1 : (
+        (b.preguntasCorrectas.length > a.preguntasCorrectas.length)
+        ? -1 : 0
+      )
+    );
+
     const posiciones = positions.map((item, index) => {
       return (
-        <tr key={item.mesa} className={index === 0 ? 'yellowColor' : ''}>
+        <tr key={item.numero} className={index === 0 ? 'yellowColor' : ''}>
           <th scope="row">{index + 1}</th>
-          <td>Mesa {item.mesa}</td>
-          <td>{item.pts}</td>
+          <td>Mesa {item.numero}</td>
+          <td>{item.preguntasCorrectas.length}</td>
         </tr>
       );
     });
@@ -106,7 +71,7 @@ class Scoreboard extends Component {
             </div>
             <div className="cardContainer">
               <h5>
-                {data[question].pregunta}
+                {question.pregunta}
               </h5>
 
               {preguntas}

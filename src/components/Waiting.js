@@ -6,12 +6,6 @@ import clock from '../assets/clock.png';
 import './Waiting.scss';
 
 class Waiting extends Component {
-  componentDidMount() {
-    setTimeout(() => {
-      this.props.setAllPlayers();
-    }, 3000);
-  }
-
   render() {
     const { mesa } = this.props;
 

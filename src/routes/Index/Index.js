@@ -13,16 +13,24 @@ class Index extends Component {
 
     this.state = {
       mesa: null,
-      allPlayers: false,
+      ready: false,
       question: 0,
       points: 0,
     };
 
-    subscribeToEstado((msg) => console.log(msg));
-    subscribeToStatus((obj) => console.log(obj));
+    subscribeToEstado((msg) => {
+      console.log(msg);
+
+      if (msg === 'EN JUEGO') {
+        this.setState({ ready: true });
+      }
+    });
+
+    subscribeToStatus((obj) => {
+      console.log(obj);
+    });
 
     this.setTable = this.setTable.bind(this);
-    this.setAllPlayers = this.setAllPlayers.bind(this);
     this.nextQuestion = this.nextQuestion.bind(this);
   }
 
@@ -59,12 +67,8 @@ class Index extends Component {
     }
   }
 
-  setAllPlayers() {
-    this.setState({ allPlayers: true });
-  }
-
   render() {
-    const { mesa, allPlayers, question, points } = this.state;
+    const { mesa, ready, question, points } = this.state;
 
     if (question === 38) {
       return (
@@ -75,7 +79,7 @@ class Index extends Component {
       );
     }
 
-    if (mesa && allPlayers) {
+    if (mesa && ready) {
       return (
         <Question
           mesa={mesa}
@@ -90,7 +94,6 @@ class Index extends Component {
       return (
         <Waiting
           mesa={mesa}
-          setAllPlayers={this.setAllPlayers}
         />
       );
     }
