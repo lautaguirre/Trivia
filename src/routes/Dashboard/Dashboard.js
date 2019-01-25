@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { subscribeToEstado, subscribeToStatus } from '../../api/api';
+
+import { removeAllListeners, subscribeToStatus } from '../../api/api';
 
 import Winner from '../../components/Winner';
 import Scoreboard from '../../components/Scoreboard';
@@ -9,42 +10,44 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      finished: false,
-      ready: false,
-      question: null,
-      tables: null
+      ready: 0,
+      question: {},
+      mesas: null,
+      timer: 0,
     };
+  }
 
-    subscribeToEstado((msg) => {
-      //console.log(msg);
+  componentWillUnmount() {
+    removeAllListeners('status');
+  }
 
-      if (msg === 'EN JUEGO') {
-        this.setState({ ready: true });
-      }
-    });
-
-    subscribeToStatus((stat) => {
-      //console.log(stat);
-
+  componentDidMount() {
+    subscribeToStatus((status) => {
+      console.log(status);
       this.setState({
-        question: stat.pregunta,
-        tables: stat.mesas
+        ready: status.estado,
+        question: status.pregunta,
+        mesas: status.mesas,
+        timer: status.tiempo
       });
     });
   }
 
   render() {
-    const { finished, ready, question, tables } = this.state;
+    const { ready, question, mesas, timer } = this.state;
 
-    if (finished) {
-      return <Winner tables={tables} />;
+    if (ready === 2) {
+      return <Winner mesas={mesas} />;
     }
 
-    return <Scoreboard
-      ready={ready}
-      question={question}
-      tables={tables}
-    />;
+    return (
+      <Scoreboard
+        ready={ready}
+        question={question}
+        mesas={mesas}
+        timer={timer}
+      />
+    );
   }
 }
 

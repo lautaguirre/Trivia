@@ -1,90 +1,56 @@
 import React, { Component } from 'react';
 import { Progress } from 'reactstrap';
 
-import './Questions.scss';
+import { addPoint } from '../api/api';
 
-import data from '../assets/questions.json';
+import './Questions.scss';
 
 class Question extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      timer: 30,
       selected: null,
     };
 
     this.intervalo = null;
 
     this.setSelected = this.setSelected.bind(this);
-    this.initTimer = this.initTimer.bind(this);
-    this.checkResponse = this.checkResponse.bind(this);
   }
 
   setSelected(index) {
     this.setState({ selected: index });
   }
 
-  componentDidMount() {
-    this.initTimer(false);
-  }
-
-  componentWillUnmount() {
-    this.initTimer(true);
-  }
-
-  checkResponse() {
-    const { nextQuestion, question } = this.props;
+  componentDidUpdate() {
     const { selected } = this.state;
+    const { timer, question, mesa } = this.props;
 
-    if (selected === data[question].correcta) {
-      nextQuestion(true);
-    } else {
-      nextQuestion(false);
+    if (timer === 0) {
+      if (selected === question.correcta) {
+        console.log('point' + mesa);
+        addPoint(mesa);
+      }
     }
-  }
 
-  initTimer(cancel) {
-    const { question } = this.props;
-
-    if (!cancel) {
-      this.intervalo = setInterval(() => {
-        this.setState((prevState) => ({ timer: prevState.timer - 1 }));
-
-        if (this.state.timer === 0) {
-          clearInterval(this.intervalo);
-
-          this.setState(({ timer: '00' }));
-
-          setTimeout(() => {
-            this.checkResponse();
-
-            if (question !== 37) {
-              this.setState(({ timer: 30, selected: null, correct: null }));
-
-              this.initTimer(false);
-            }
-          }, 2000);
-        }
-      }, 1000);
-    } else {
-      clearInterval(this.intervalo);
+    if (timer === 10 && selected != null) {
+      this.setState({ selected: null });
     }
   }
 
   render() {
-    const { timer, selected } = this.state;
-    const { mesa, points, question } = this.props;
+    const { selected } = this.state;
+    const { mesa, points, question, questionNumber, totalQuestions, timer } = this.props;
 
-    const preguntas = data[question].respuestas.map((respuesta, index) => {
+    const preguntas = question.respuestas.map((respuesta, index) => {
       const style = () => {
-        if (timer !== '00') {
+        if (timer > 0) {
           return (selected === index) && 'selectedAnswer';
         } else {
           if (selected === index) {
-            return (selected !== data[question].correcta) ? 'wrongAnswer' : 'rightAnswer';
+            return (selected !== question.correcta) ? 'wrongAnswer' : 'rightAnswer';
           } else {
-            return (index === data[question].correcta) && 'rightAnswer';
+            return (index === question.correcta) && 'rightAnswer';
           }
         }
       };
@@ -94,7 +60,7 @@ class Question extends Component {
           key={respuesta}
           className={`whiteBtn ${style()}`}
           onClick={() => {
-            if (timer !== '00') this.setSelected(index);
+            if (timer > 0) this.setSelected(index);
           }}
         >
           {respuesta}
@@ -105,21 +71,21 @@ class Question extends Component {
     return (
       <div className="questionSection flexContainer">
         <div className="cardContainer">
-          <div className="questionNumber" >{`${question + 1} de ${data.length}`}</div>
+          <div className="questionNumber" >{`${questionNumber + 1} de ${totalQuestions}`}</div>
           <h1
-            className={timer === '00' ? 'text-danger' : ''}
+            className={timer <= 0 ? 'text-danger' : ''}
           >
-            {timer}
+            {timer <= 0 ? '00' : timer}
           </h1>
 
           <Progress
             className="w-100"
-            value={timer === '00' ? 100 : (timer * 100) / 30}
-            color={timer === '00' ? 'danger' : 'success'}
+            value={timer <= 0 ? 100 : (timer * 100) / 10}
+            color={timer <= 0 ? 'danger' : 'success'}
           />
 
           <h5>
-            {data[question].pregunta}
+            {question.pregunta}
           </h5>
 
           {preguntas}

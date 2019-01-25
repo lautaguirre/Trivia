@@ -7,23 +7,12 @@ import logo from '../assets/logo.png';
 import './Scoreboard.scss';
 
 class Scoreboard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      timer: 15
-    };
-  }
-
   render() {
-    const { timer } = this.state;
-    const { question, tables } = this.props;
+    const { question, mesas, timer, ready } = this.props;
 
-    if (!question) return null;
-
-    const preguntas = question.respuestas.map((respuesta, index) => {
+    const preguntas = (ready > 0) && question.respuestas.map((respuesta, index) => {
       const style = () => {
-        if (timer === '00') {
+        if (timer <= 0) {
           return (index === question.correcta) && 'rightAnswer';
         }
       };
@@ -38,20 +27,21 @@ class Scoreboard extends Component {
       );
     });
 
-    const positions = tables.sort((a,b) => (
-      a.preguntasCorrectas.length > b.preguntasCorrectas.length)
-      ? 1 : (
-        (b.preguntasCorrectas.length > a.preguntasCorrectas.length)
-        ? -1 : 0
-      )
-    );
+    let positions = [];
+    for (const mesa in mesas) {
+      positions.push([mesa, mesas[mesa]]);
+    }
+
+    positions.sort((a, b) => {
+      return b[1].puntos - a[1].puntos;
+    });
 
     const posiciones = positions.map((item, index) => {
       return (
-        <tr key={item.numero} className={index === 0 ? 'yellowColor' : ''}>
+        <tr key={item[0]} className={index === 0 ? 'yellowColor' : ''}>
           <th scope="row">{index + 1}</th>
-          <td>Mesa {item.numero}</td>
-          <td>{item.preguntasCorrectas.length}</td>
+          <td>Mesa {item[0]}</td>
+          <td>{item[1].puntos}</td>
         </tr>
       );
     });
@@ -81,14 +71,14 @@ class Scoreboard extends Component {
             <div className="scoreHeader" >
               <Progress
                 className="w-100"
-                value={timer === '00' ? 100 : (timer * 100) / 30}
-                color={timer === '00' ? 'danger' : 'success'}
+                value={timer <= 0 ? 100 : (timer * 100) / 10}
+                color={timer <= 0 ? 'danger' : 'success'}
               />
 
               <h1
-                className={timer === '00' ? 'text-danger' : ''}
+                className={timer <= 0 ? 'text-danger' : ''}
               >
-                {timer}
+                {timer <= 0 ? '00' : timer}
               </h1>
             </div>
             <div className="cardContainer">

@@ -9,6 +9,17 @@ import './Winner.scss';
 
 class Winner extends Component {
   render() {
+    const { mesas } = this.props;
+
+    let positions = [];
+    for (const mesa in mesas) {
+      positions.push([mesa, mesas[mesa]]);
+    }
+
+    positions.sort((a, b) => {
+      return b[1].puntos - a[1].puntos;
+    });
+
     return (
       <div className="winnerSection flexContainer">
         <Row>
@@ -27,7 +38,7 @@ class Winner extends Component {
 
               <div>
                 <img src={congrats} alt="Congrats" className="congratsImage" />
-                <div className="congratsTable">MESA 20</div>
+                <div className="congratsTable">MESA {positions[0][0]}</div>
               </div>
             </div>
           </Col>

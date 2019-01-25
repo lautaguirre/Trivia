@@ -5,7 +5,7 @@ import Waiting from '../../components/Waiting';
 import Question from '../../components/Question';
 import Result from '../../components/Result';
 
-import { subscribeToEstado, subscribeToStatus, addMesa} from '../../api/api';
+import { subscribeToStatus, addMesa, removeAllListeners } from '../../api/api';
 
 class Index extends Component {
   constructor(props) {
@@ -13,29 +13,35 @@ class Index extends Component {
 
     this.state = {
       mesa: null,
-      ready: false,
-      question: 0,
+      ready: 0,
+      question: {},
       points: 0,
+      questionNumber: 0,
+      totalQuestions: 0,
+      timer: 10,
     };
 
-    subscribeToEstado((msg) => {
-      console.log(msg);
-
-      if (msg === 'EN JUEGO') {
-        this.setState({ ready: true });
-      }
-    });
-
-    subscribeToStatus((obj) => {
-      console.log(obj);
-    });
-
     this.setTable = this.setTable.bind(this);
-    this.nextQuestion = this.nextQuestion.bind(this);
+  }
+
+  componentWillUnmount() {
+    removeAllListeners('status');
   }
 
   componentDidMount() {
     const { mesa } = this.props.match.params;
+
+    subscribeToStatus((status) => {
+      console.log(status);
+      this.setState({
+        ready: status.estado,
+        question: status.pregunta,
+        points: status.mesas[this.state.mesa].puntos,
+        questionNumber: status.preguntaActual,
+        totalQuestions: status.totalPreguntas,
+        timer: status.tiempo
+      });
+    });
 
     if (!isNaN(mesa) && Number.isInteger(Number(mesa)) && mesa <= 50 && mesa > 0) {
       this.setState({ mesa }, () => {
@@ -54,23 +60,10 @@ class Index extends Component {
     }
   }
 
-  nextQuestion(addPoint) {
-    if (addPoint) {
-      this.setState((prevState) => ({
-        points: prevState.points + 1,
-        question: prevState.question + 1
-      }));
-    } else {
-      this.setState((prevState) => ({
-        question: prevState.question + 1
-      }));
-    }
-  }
-
   render() {
-    const { mesa, ready, question, points } = this.state;
+    const { timer, mesa, ready, question, points, questionNumber, totalQuestions } = this.state;
 
-    if (question === 38) {
+    if (ready === 2) {
       return (
         <Result
           mesa={mesa}
@@ -79,13 +72,16 @@ class Index extends Component {
       );
     }
 
-    if (mesa && ready) {
+    if (mesa && (ready === 1)) {
       return (
         <Question
           mesa={mesa}
           question={question}
           points={points}
           nextQuestion={this.nextQuestion}
+          questionNumber={questionNumber}
+          totalQuestions={totalQuestions}
+          timer={timer}
         />
       );
     }
