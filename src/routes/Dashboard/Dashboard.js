@@ -23,7 +23,6 @@ class Dashboard extends Component {
 
   componentDidMount() {
     subscribeToStatus((status) => {
-      console.log(status);
       this.setState({
         ready: status.estado,
         question: status.pregunta,

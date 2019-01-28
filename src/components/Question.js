@@ -24,16 +24,15 @@ class Question extends Component {
 
   componentDidUpdate() {
     const { selected } = this.state;
-    const { timer, question, mesa } = this.props;
+    const { timer, question, mesa, questionNumber } = this.props;
 
     if (timer === 0) {
       if (selected === question.correcta) {
-        console.log('point' + mesa);
-        addPoint(mesa);
+        addPoint(mesa, questionNumber);
       }
     }
 
-    if (timer === 10 && selected != null) {
+    if (timer === 30 && selected != null) {
       this.setState({ selected: null });
     }
   }
@@ -71,7 +70,7 @@ class Question extends Component {
     return (
       <div className="questionSection flexContainer">
         <div className="cardContainer">
-          <div className="questionNumber" >{`${questionNumber + 1} de ${totalQuestions}`}</div>
+          <div className="questionNumber" >{`${questionNumber} de ${totalQuestions}`}</div>
           <h1
             className={timer <= 0 ? 'text-danger' : ''}
           >
@@ -80,7 +79,7 @@ class Question extends Component {
 
           <Progress
             className="w-100"
-            value={timer <= 0 ? 100 : (timer * 100) / 10}
+            value={timer <= 0 ? 100 : (timer * 100) / 30}
             color={timer <= 0 ? 'danger' : 'success'}
           />
 

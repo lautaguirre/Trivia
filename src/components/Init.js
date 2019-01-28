@@ -11,6 +11,12 @@ class Init extends Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
+  componentDidMount() {
+    const { setTable } = this.props;
+
+    setTable(null);
+  }
+
   handleInput(e) {
     this.setState({ table: e.target.value })
   }
@@ -22,7 +28,7 @@ class Init extends Component {
     return (
       <div className="initSection flexContainer">
         <div className="cardContainer">
-          <form onSubmit={(e) => setTable(e, table)}>
+          <form onSubmit={(e) => setTable(table, e)}>
             <h1>¡Hola!</h1>
 
             <h3>Ingresá el número de mesa en la que estas.</h3>

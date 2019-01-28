@@ -13,7 +13,7 @@ class Index extends Component {
 
     this.state = {
       mesa: null,
-      ready: 0,
+      estado: 0,
       question: {},
       points: 0,
       questionNumber: 0,
@@ -33,14 +33,19 @@ class Index extends Component {
 
     subscribeToStatus((status) => {
       console.log(status);
-      this.setState({
-        ready: status.estado,
-        question: status.pregunta,
-        points: status.mesas[this.state.mesa].puntos,
-        questionNumber: status.preguntaActual,
-        totalQuestions: status.totalPreguntas,
-        timer: status.tiempo
-      });
+
+      const mesaObj = status.mesas.find((item) => item.numero === this.state.mesa);
+
+      if (mesa) {
+        this.setState({
+          estado: status.estado,
+          question: status.pregunta,
+          points: mesaObj.preguntasCorrectas.length,
+          questionNumber: status.preguntaNumeroActual,
+          totalQuestions: status.cantidadPreguntas,
+          timer: status.tiempo
+        });
+      }
     });
 
     if (!isNaN(mesa) && Number.isInteger(Number(mesa)) && mesa <= 50 && mesa > 0) {
@@ -52,8 +57,8 @@ class Index extends Component {
     }
   }
 
-  setTable(e, table) {
-    e.preventDefault();
+  setTable(table, e) {
+    if (e) e.preventDefault();
 
     if (!isNaN(table) && Number.isInteger(Number(table)) && table <= 50 && table > 0) {
       this.props.history.push(`/mesa/${table}`);
@@ -61,9 +66,9 @@ class Index extends Component {
   }
 
   render() {
-    const { timer, mesa, ready, question, points, questionNumber, totalQuestions } = this.state;
+    const { timer, mesa, estado, question, points, questionNumber, totalQuestions } = this.state;
 
-    if (ready === 2) {
+    if (mesa && (estado === 2)) {
       return (
         <Result
           mesa={mesa}
@@ -72,7 +77,7 @@ class Index extends Component {
       );
     }
 
-    if (mesa && (ready === 1)) {
+    if (mesa && (estado === 1)) {
       return (
         <Question
           mesa={mesa}
@@ -86,7 +91,7 @@ class Index extends Component {
       );
     }
 
-    if (mesa) {
+    if (mesa && (estado === 0)) {
       return (
         <Waiting
           mesa={mesa}
