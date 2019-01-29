@@ -32,7 +32,7 @@ class Question extends Component {
       }
     }
 
-    if (timer === 30 && selected != null) {
+    if (timer === 20 && selected != null) {
       this.setState({ selected: null });
     }
   }
@@ -79,7 +79,7 @@ class Question extends Component {
 
           <Progress
             className="w-100"
-            value={timer <= 0 ? 100 : (timer * 100) / 30}
+            value={timer <= 0 ? 100 : (timer * 100) / 20}
             color={timer <= 0 ? 'danger' : 'success'}
           />
 

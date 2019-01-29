@@ -71,7 +71,7 @@ class Scoreboard extends Component {
             <div className="scoreHeader" >
               <Progress
                 className="w-100"
-                value={timer <= 0 ? 100 : (timer * 100) / 10}
+                value={timer <= 0 ? 100 : (timer * 100) / 20}
                 color={timer <= 0 ? 'danger' : 'success'}
               />
 

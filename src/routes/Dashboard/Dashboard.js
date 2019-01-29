@@ -13,7 +13,7 @@ class Dashboard extends Component {
       ready: 0,
       question: {},
       mesas: null,
-      timer: 0,
+      timer: 20,
     };
   }
 
