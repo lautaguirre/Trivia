@@ -19,6 +19,7 @@ class Index extends Component {
       questionNumber: 0,
       totalQuestions: 0,
       timer: 10,
+      mesaValida: false,
     };
 
     this.setTable = this.setTable.bind(this);
@@ -36,21 +37,31 @@ class Index extends Component {
 
       const mesaObj = status.mesas.find((item) => item.numero === this.state.mesa);
 
+      const mesaValida = mesaObj ? (mesaObj.token === localStorage.getItem('token')) : false;
+
       if (mesa) {
         this.setState({
           estado: status.estado,
           question: status.pregunta,
-          points: mesaObj.preguntasCorrectas.length,
+          points: mesaObj ? mesaObj.preguntasCorrectas.length : null,
           questionNumber: status.preguntaNumeroActual,
           totalQuestions: status.cantidadPreguntas,
-          timer: status.tiempo
+          timer: status.tiempo,
+          mesaValida: mesaValida
         });
       }
     });
 
     if (!isNaN(mesa) && Number.isInteger(Number(mesa)) && mesa <= 50 && mesa > 0) {
       this.setState({ mesa }, () => {
-        addMesa(mesa);
+        if (localStorage.getItem('mesa') !== mesa) {
+          const token = Math.random().toString(36).substring(7);
+
+          localStorage.setItem('token', token);
+          localStorage.setItem('mesa', mesa);
+
+          addMesa({ mesa, token });
+        }
       });
     } else {
       this.props.history.push('/');
@@ -66,9 +77,18 @@ class Index extends Component {
   }
 
   render() {
-    const { timer, mesa, estado, question, points, questionNumber, totalQuestions } = this.state;
+    const {
+      timer,
+      mesa,
+      estado,
+      question,
+      points,
+      questionNumber,
+      totalQuestions,
+      mesaValida
+    } = this.state;
 
-    if (mesa && (estado === 2)) {
+    if (mesa && (estado === 2) && mesaValida) {
       return (
         <Result
           mesa={mesa}
@@ -77,7 +97,7 @@ class Index extends Component {
       );
     }
 
-    if (mesa && (estado === 1)) {
+    if (mesa && (estado === 1) && mesaValida) {
       return (
         <Question
           mesa={mesa}
@@ -91,7 +111,7 @@ class Index extends Component {
       );
     }
 
-    if (mesa && (estado === 0)) {
+    if (mesa && (estado === 0) && mesaValida) {
       return (
         <Waiting
           mesa={mesa}
