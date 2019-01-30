@@ -90,7 +90,7 @@ class Scoreboard extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {posiciones}
+                  {posiciones.slice(0, 10)}
                 </tbody>
               </Table>
             </div>
