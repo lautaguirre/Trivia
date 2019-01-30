@@ -8,18 +8,6 @@ export const subscribeToStatus = (callback) => {
   });
 };
 
-export const subscribeToEstado = (callback) => {
-  socket.on('estado', (obj) => {
-    callback(obj);
-  });
-};
-
-export const subscribeToPregunta = (callback) => {
-  socket.on('pregunta', (obj) => {
-    callback(obj);
-  });
-};
-
 export const addMesa = (mesa) => {
   socket.emit('agregarmesa', mesa);
 };

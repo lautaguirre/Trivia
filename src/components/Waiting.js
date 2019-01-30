@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import clock from '../assets/clock.png';
-
 import './Waiting.scss';
 
 class Waiting extends Component {
@@ -12,20 +10,18 @@ class Waiting extends Component {
     return (
       <div className="waitingSection flexContainer">
         <div className="cardContainer">
-          <div className="clock">
-            <img src={clock} width="30" alt="Clock"/>
-          </div>
+          <div className="loader" />
 
-          <div>
+          <div className="content">
             Bienvenida mesa {mesa}<br/>
             Esperemos que se
             conecten los demas competidores y
             empezamos el juego!
           </div>
 
-          <h5>Elegiste mal tu mesa?</h5>
+          <div className="wrongTable">Elegiste mal tu mesa?</div>
 
-          <Link className="whiteBtn" to="/">Volver</Link>
+          <Link className="backBtn" to="/">Volver</Link>
         </div>
       </div>
     );

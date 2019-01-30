@@ -12,7 +12,7 @@ class Dashboard extends Component {
     this.state = {
       ready: 0,
       question: {},
-      mesas: null,
+      mesas: [],
       timer: 20,
     };
   }

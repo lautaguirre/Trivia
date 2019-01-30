@@ -13,7 +13,7 @@ class Scoreboard extends Component {
     const preguntas = (ready > 0) && question.respuestas.map((respuesta, index) => {
       const style = () => {
         if (timer <= 0) {
-          return (index === question.correcta) && 'rightAnswer';
+          return (index === question.correcta) ? 'rightAnswer' : '';
         }
       };
 
@@ -27,21 +27,18 @@ class Scoreboard extends Component {
       );
     });
 
-    let positions = [];
-    for (const mesa in mesas) {
-      positions.push([mesa, mesas[mesa]]);
-    }
+    let positions = [ ...mesas ];
 
     positions.sort((a, b) => {
-      return b[1].puntos - a[1].puntos;
+      return b.preguntasCorrectas.length - a.preguntasCorrectas.length;
     });
 
     const posiciones = positions.map((item, index) => {
       return (
-        <tr key={item[0]} className={index === 0 ? 'yellowColor' : ''}>
+        <tr key={item.numero} className={index === 0 ? 'yellowColor' : ''}>
           <th scope="row">{index + 1}</th>
-          <td>Mesa {item[0]}</td>
-          <td>{item[1].puntos}</td>
+          <td>Mesa {item.numero}</td>
+          <td>{item.preguntasCorrectas.length}</td>
         </tr>
       );
     });

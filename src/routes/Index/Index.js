@@ -19,6 +19,7 @@ class Index extends Component {
       questionNumber: 0,
       totalQuestions: 0,
       timer: 10,
+      mesas: [],
     };
 
     this.setTable = this.setTable.bind(this);
@@ -44,6 +45,7 @@ class Index extends Component {
           questionNumber: status.preguntaNumeroActual,
           totalQuestions: status.cantidadPreguntas,
           timer: status.tiempo,
+          mesas: status.mesas,
         });
       }
     });
@@ -74,6 +76,7 @@ class Index extends Component {
       points,
       questionNumber,
       totalQuestions,
+      mesas,
     } = this.state;
 
     if (mesa && (estado === 2)) {
@@ -81,6 +84,7 @@ class Index extends Component {
         <Result
           mesa={mesa}
           points={points}
+          mesas={mesas}
         />
       );
     }

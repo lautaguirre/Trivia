@@ -44,12 +44,12 @@ class Question extends Component {
     const preguntas = question.respuestas.map((respuesta, index) => {
       const style = () => {
         if (timer > 0) {
-          return (selected === index) && 'selectedAnswer';
+          return (selected === index) ? 'selectedAnswer' : '';
         } else {
           if (selected === index) {
             return (selected !== question.correcta) ? 'wrongAnswer' : 'rightAnswer';
           } else {
-            return (index === question.correcta) && 'rightAnswer';
+            return (index === question.correcta) ? 'rightAnswer' : '';
           }
         }
       };
@@ -91,7 +91,7 @@ class Question extends Component {
 
           <div className="footer">
             <div>Mesa {mesa}</div>
-            <div className="footerPoints">Pts: {points}</div>
+            <div className="footerPoints">Puntos: {points}</div>
           </div>
         </div>
       </div>
