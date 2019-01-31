@@ -15,7 +15,7 @@ class Index extends Component {
       mesa: null,
       estado: 0,
       question: {},
-      points: 0,
+      points: null,
       questionNumber: 0,
       totalQuestions: 0,
       timer: 10,
@@ -36,6 +36,8 @@ class Index extends Component {
       console.log(status);
 
       const mesaObj = status.mesas.find((item) => item.numero === this.state.mesa);
+
+      if (!mesaObj && status.estado !== 0) return this.props.history.push('/');
 
       if (mesa) {
         this.setState({

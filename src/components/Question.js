@@ -26,13 +26,13 @@ class Question extends Component {
     const { selected } = this.state;
     const { timer, question, mesa, questionNumber } = this.props;
 
-    if (timer === 0) {
+    if (timer < 0) {
       if (selected === question.correcta) {
         addPoint(mesa, questionNumber);
       }
     }
 
-    if (timer === 20 && selected != null) {
+    if ((timer === 20 || timer === 21) && selected != null) {
       this.setState({ selected: null });
     }
   }
