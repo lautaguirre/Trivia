@@ -1,5 +1,16 @@
 .resultSection {
   .cardContainer {
+    .winnerTitle {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .winnerSubtitle {
+      font-size: 3em;
+      font-weight: bold;
+      color: lightgreen;
+    }
+
     .totalTitle {
       font-size: 32px;
       font-weight: bold;

@@ -12,14 +12,25 @@ class Result extends Component {
       return b.preguntasCorrectas.length - a.preguntasCorrectas.length;
     });
 
+    const myTable = positions.find(item => item.numero === mesa);
+
+    const isWinner = (myTable.preguntasCorrectas.length === positions[0].preguntasCorrectas.length)
+      ? (
+        <div>
+          <div className="winnerTitle">
+            Felicitaciones!
+          </div>
+          <div className="winnerSubtitle">
+            Ganaste!
+          </div>
+        </div>
+      ) : null;
+
     return (
       <div className="resultSection flexContainer">
         <div className="cardContainer">
 
-          <h1>
-            {positions[0].numero === mesa
-              ? 'GANASTE!' : null}
-          </h1>
+          {isWinner}
 
           <div className="totalTitle">TOTAL</div>
           <h1 className="totalPoints">

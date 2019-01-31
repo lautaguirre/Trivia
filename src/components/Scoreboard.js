@@ -35,7 +35,13 @@ class Scoreboard extends Component {
 
     const posiciones = positions.map((item, index) => {
       return (
-        <tr key={item.numero} className={index === 0 ? 'yellowColor' : ''}>
+        <tr
+          key={item.numero}
+          className={
+            (item.preguntasCorrectas.length === positions[0].preguntasCorrectas.length)
+            ? 'yellowColor' : ''
+          }
+        >
           <th scope="row">{index + 1}</th>
           <td>Mesa {item.numero}</td>
           <td>{item.preguntasCorrectas.length}</td>
@@ -44,7 +50,7 @@ class Scoreboard extends Component {
     });
 
     return (
-      <div className="scoreboardSection flexContainer">
+      <div className="scoreboardSection">
         <Row>
           <Col xs="6">
             <div className="scoreHeader" >

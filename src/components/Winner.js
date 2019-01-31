@@ -17,6 +17,16 @@ class Winner extends Component {
       return b.preguntasCorrectas.length - a.preguntasCorrectas.length;
     });
 
+    const posiciones = positions.map(item => {
+      if (item.preguntasCorrectas.length === positions[0].preguntasCorrectas.length) {
+        return (
+          <div key={item.numero} className="congratsTable">MESA {item.numero}</div>
+        );
+      }
+
+      return null;
+    });
+
     return (
       <div className="winnerSection flexContainer">
         <Row>
@@ -35,7 +45,7 @@ class Winner extends Component {
 
               <div>
                 <img src={congrats} alt="Congrats" className="congratsImage" />
-                <div className="congratsTable">MESA {positions[0].numero}</div>
+                {posiciones}
               </div>
             </div>
           </Col>
