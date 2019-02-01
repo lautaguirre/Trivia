@@ -13,13 +13,13 @@ class Waiting extends Component {
           <div className="loader" />
 
           <div className="content">
-            <strong>¡Bienvenida mesa {mesa}!</strong><br/>
+            <strong>¡ Bienvenida mesa <span className="yellowColor" >{mesa}</span> !</strong><br/>
             Esperemos que se
             conecten los demas competidores y
             empezamos el juego.
           </div>
 
-          <div className="wrongTable">Elegiste mal tu mesa?</div>
+          <div className="wrongTable">¿Elegiste mal tu mesa?</div>
 
           <Link className="backBtn" to="/">Volver</Link>
         </div>

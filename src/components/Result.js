@@ -18,10 +18,10 @@ class Result extends Component {
       ? (
         <div>
           <div className="winnerTitle">
-            Felicitaciones!
+            ¡Felicitaciones!
           </div>
           <div className="winnerSubtitle">
-            Ganaste!
+            ¡Ganaste!
           </div>
         </div>
       ) : null;
@@ -40,7 +40,7 @@ class Result extends Component {
 
           <div className="footer">
             <div>Mesa {mesa}</div>
-            <div className="footerPoints">Pts: {points}</div>
+            <div className="footerPoints">Puntos: {points}</div>
           </div>
         </div>
       </div>

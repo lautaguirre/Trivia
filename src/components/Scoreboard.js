@@ -64,7 +64,7 @@ class Scoreboard extends Component {
             </div>
             <div className="cardContainer">
               <h5>
-                {question.pregunta}
+                {(ready > 0) && question.pregunta}
               </h5>
 
               {preguntas}
@@ -85,7 +85,7 @@ class Scoreboard extends Component {
               </h1>
             </div>
             <div className="cardContainer">
-              <h1 className="positions">POSICIONES</h1>
+              <h1 className="positions">POSICIONES - TOP 10</h1>
 
               <Table borderless responsive>
                 <thead>
